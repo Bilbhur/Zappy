@@ -1,0 +1,23 @@
+#include <sstream>
+#include <string>
+
+// TODO remplacer les paramètres par un pointeur sur l'objet player
+void createPortionMap(int posY, int posX, char orientation, char **board) {
+	
+	std::stringstream ss;
+
+	switch(orientation) {
+		case 'N':
+			ss << board[y-1][x-1] << ", " << board[y-1][x] << ", " << board[y-1][x+1] << ", " << board[y-2][x];
+			std::string map = ss.str();
+		case 'E':
+			ss << board[y-1][x+1] << ", " << board[y][x+1] << ", " << board[y+1][x+1] << ", " << board[y][x+2];
+			std::string map = ss.str();
+		case 'S':
+			ss << board[y+1][x+1] << ", " << board[y+1][x] << ", " << board[y+1][x-1] << ", " << board[y+2][x];
+			std::string map = ss.str();
+		case 'O':
+			ss << board[y+1][x-1] << ", " << board[y][x-1] << ", " << board[y-1][x-1] << ", " << board[y][x-2];
+			std::string map = ss.str();
+	}
+}
